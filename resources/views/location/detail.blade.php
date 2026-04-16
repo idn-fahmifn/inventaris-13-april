@@ -14,7 +14,7 @@
                         class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-6 py-2.5 rounded-xl text-sm font-bold shadow-lg shadow-blue-200 dark:shadow-none transition-all duration-300 transform hover:scale-105">
                         Edit Lokasi
                     </button>
-                    <button x-data=""
+                    <button x-data="" onclick="return confirm('Apakah Anda yakin ingin memindahkan lokasi ini ke sampah?')"
                         class="bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700 ms-2 text-white px-6 py-2.5 rounded-xl text-sm font-bold shadow-lg shadow-red-200 dark:shadow-none transition-all duration-300 transform hover:scale-105">
                         Pindahkan ke sampah
                     </button>
