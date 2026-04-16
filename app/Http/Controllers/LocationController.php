@@ -55,7 +55,7 @@ class LocationController extends Controller
         ]);
 
         return redirect()->route('location.index')
-        ->with('success', 'Lokasi berhasil diperbarui.');
+            ->with('success', 'Lokasi berhasil diperbarui.');
     }
 
     public function destroy($id)
@@ -64,7 +64,7 @@ class LocationController extends Controller
         $location->delete();
 
         return redirect()->route('location.index')
-        ->with('success', 'Lokasi berhasil dipindahkan ke sampah.');
+            ->with('success', 'Lokasi berhasil dipindahkan ke sampah.');
     }
 
     public function trash()
@@ -75,19 +75,19 @@ class LocationController extends Controller
 
     public function restore($id)
     {
-        $location = Location::findOrFail($id);
+        $location = Location::withTrashed()->findOrFail($id);
         $location->restore();
 
-        return redirect()->route('location.index')
-        ->with('success', 'Lokasi berhasil dikembalikan.');
+        return redirect()->route('location.trash')
+            ->with('success', 'Lokasi berhasil dikembalikan.');
     }
 
     public function forceDelete($id)
     {
-        $location = Location::findOrFail($id);
+        $location = Location::withTrashed()->findOrFail($id);
         $location->forceDelete();
 
-        return redirect()->route('location.index')
-        ->with('success', 'Lokasi berhasil dihapus permanen.');
+        return redirect()->route('location.trash')
+            ->with('success', 'Lokasi berhasil dihapus permanen.');
     }
 }
