@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PetugasController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +15,11 @@ Route::prefix('admin')->middleware(['auth', 'verified', 'role'])->group(function
 
     // dashboar admin
     Route::get('/dashboard', [DashboardController::class, 'admin'])->name('dashboard');
+
+    // Petugas
+    Route::get('/petugas', [PetugasController::class, 'index'])->name('petugas.index');
+
+
 
 });
 
