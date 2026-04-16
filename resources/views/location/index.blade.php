@@ -4,10 +4,16 @@
             <h2 class="font-bold text-2xl text-slate-800 dark:text-slate-200 leading-tight">
                 {{ __('Daftar Lokasi') }}
             </h2>
-            <button x-data="" x-on:click.prevent="$dispatch('open-modal', 'create-room')"
-                class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-6 py-2.5 rounded-xl text-sm font-bold shadow-lg shadow-blue-200 dark:shadow-none transition-all duration-300 transform hover:scale-105">
-                + Tambah Lokasi
-            </button>
+
+            <div class="flex justify-between items-center">
+                <button x-data="" x-on:click.prevent="$dispatch('open-modal', 'create-room')"
+                    class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-6 py-2.5 rounded-xl text-sm font-bold shadow-lg shadow-blue-200 dark:shadow-none transition-all duration-300 transform hover:scale-105">
+                    + Tambah Lokasi
+                </button>
+                <a href="" class="bg-gradient-to-r from-red-600 to-orange-600 ms-2 hover:from-red-700 hover:to-orange-700 text-white px-6 py-2.5 rounded-xl text-sm font-bold shadow-lg shadow-blue-200 dark:shadow-none transition-all duration-300 transform hover:scale-105">Lihat Sampah</a>
+            </div>
+
+
         </div>
     </x-slot>
 
@@ -104,9 +110,10 @@
 
                     <div class="my-2">
                         <x-input-label for="petugas" :value="__('Petugas')" />
-                        <select name="petugas" id="petugas" class="block mt-1 w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm">
+                        <select name="petugas" id="petugas"
+                            class="block mt-1 w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm">
                             <option value="">Pilih Petugas</option>
-                            @foreach($petugas as $p)
+                            @foreach ($petugas as $p)
                                 <option value="{{ $p->id }}" {{ old('petugas') == $p->id ? 'selected' : '' }}>
                                     {{ $p->name }}
                                 </option>
@@ -118,7 +125,8 @@
 
                 <div class="my-2">
                     <x-input-label for="description" :value="__('Description')" />
-                    <textarea name="description" id="description" class="block mt-1 w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm">{{ old('description') }}</textarea>
+                    <textarea name="description" id="description"
+                        class="block mt-1 w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm">{{ old('description') }}</textarea>
                     <x-input-error :messages="$errors->get('description')" class="mt-2" />
                 </div>
 

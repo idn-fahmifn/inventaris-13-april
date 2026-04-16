@@ -6,8 +6,6 @@
             </h2>
 
             <div class="flex justify-between items-center">
-
-
                 <form action="{{ route('location.destroy', $location->id) }}" method="post">
                     @csrf @method('delete')
                     <button x-data="" x-on:click.prevent="$dispatch('open-modal', 'create-room')"
@@ -18,11 +16,7 @@
                         class="bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700 ms-2 text-white px-6 py-2.5 rounded-xl text-sm font-bold shadow-lg shadow-red-200 dark:shadow-none transition-all duration-300 transform hover:scale-105">
                         Pindahkan ke sampah
                     </button>
-
                 </form>
-
-
-
             </div>
         </div>
     </x-slot>
