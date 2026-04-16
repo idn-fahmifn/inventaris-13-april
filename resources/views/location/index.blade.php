@@ -104,7 +104,7 @@
 
                     <div class="my-2">
                         <x-input-label for="petugas" :value="__('Petugas')" />
-                        <select name="petugas" id="petugas" class="block mt-1 w-full border-gray-300 focus:border-blue-500 focus:ring-blue-500 rounded-md shadow-sm">
+                        <select name="petugas" id="petugas" class="block mt-1 w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm">
                             <option value="">Pilih Petugas</option>
                             @foreach($petugas as $p)
                                 <option value="{{ $p->id }}" {{ old('petugas') == $p->id ? 'selected' : '' }}>
@@ -118,7 +118,7 @@
 
                 <div class="my-2">
                     <x-input-label for="description" :value="__('Description')" />
-                    <textarea name="description" id="description" class="block mt-1 w-full">{{ old('description') }}</textarea>
+                    <textarea name="description" id="description" class="block mt-1 w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm">{{ old('description') }}</textarea>
                     <x-input-error :messages="$errors->get('description')" class="mt-2" />
                 </div>
 
