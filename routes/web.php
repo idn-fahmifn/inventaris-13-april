@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\LocationController;
 use App\Http\Controllers\PetugasController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -19,6 +20,9 @@ Route::prefix('admin')->middleware(['auth', 'verified', 'role'])->group(function
     // Petugas
     Route::get('/petugas', [PetugasController::class, 'index'])->name('petugas.index');
     Route::post('/petugas', [PetugasController::class, 'store'])->name('petugas.store');
+
+    // lokasi
+    Route::get('/location', [LocationController::class,'index'])->name('location.index');
 
 
 

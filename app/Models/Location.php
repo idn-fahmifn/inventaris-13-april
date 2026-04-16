@@ -22,7 +22,7 @@ class Location extends Model
     // relasi ke item (banyak item dalam 1 lokasi)
     public function item()
     {
-        return $this->hasMany(Item::class, 'item_id');
+        return $this->hasMany(Item::class, 'location_id');
     }
 
 }
