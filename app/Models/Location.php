@@ -6,10 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Location extends Model
 {
-    protected $guarded = [];
+    protected $guarded = []; //massasigment agar semua column bisa dibaca
 
     protected $casts = [
-        'created_at' => 'datetime',
+        'created_at' => 'datetime', // memastikan tipe data datetime
         'updated_at' => 'datetime',
     ];
 
@@ -19,9 +19,10 @@ class Location extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
+    // relasi ke item (banyak item dalam 1 lokasi)
     public function item()
     {
-        return $this->belongsTo(Item::class, 'item_id');
+        return $this->hasMany(Item::class, 'item_id');
     }
 
 }
