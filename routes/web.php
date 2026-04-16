@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ItemController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\PetugasController;
 use App\Http\Controllers\ProfileController;
@@ -21,20 +22,28 @@ Route::prefix('admin')->middleware(['auth', 'verified', 'role'])->group(function
     Route::get('/petugas', [PetugasController::class, 'index'])->name('petugas.index');
     Route::post('/petugas', [PetugasController::class, 'store'])->name('petugas.store');
 
-     // menampilkan tempat sampah lokasi
+    // menampilkan tempat sampah lokasi
     Route::get('/location/trash', [LocationController::class, 'trash'])->name('location.trash');
-    Route::patch('/lokasi/{location}/restore', [LocationController::class, 'restore'])->name('location.restore');
-    Route::delete('/lokasi/{location}/force-delete', [LocationController::class, 'forceDelete'])->name('location.force-delete');
+    Route::patch('/location/{location}/restore', [LocationController::class, 'restore'])->name('location.restore');
+    Route::delete('/location/{location}/force-delete', [LocationController::class, 'forceDelete'])->name('location.force-delete');
 
     // lokasi
-    Route::get('/location', [LocationController::class,'index'])->name('location.index');
-    Route::post('/location', [LocationController::class,'store'])->name('location.store');
-    Route::get('/location/{location}', [LocationController::class,'show'])->name('location.show');
-    Route::put('/location/{location}', [LocationController::class,'update'])->name('location.update');
-    Route::delete('/location/{location}', [LocationController::class,'destroy'])->name('location.destroy');
+    Route::get('/location', [LocationController::class, 'index'])->name('location.index');
+    Route::post('/location', [LocationController::class, 'store'])->name('location.store');
+    Route::get('/location/{location}', [LocationController::class, 'show'])->name('location.show');
+    Route::put('/location/{location}', [LocationController::class, 'update'])->name('location.update');
+    Route::delete('/location/{location}', [LocationController::class, 'destroy'])->name('location.destroy');
 
-   
-
+    // menampilkan tempat sampah lokasi
+    Route::get('/location/trash', [LocationController::class, 'trash'])->name('location.trash');
+    Route::patch('/location/{location}/restore', [LocationController::class, 'restore'])->name('location.restore');
+    Route::delete('/location/{location}/force-delete', [LocationController::class, 'forceDelete'])->name('location.force-delete');
+    // item
+    Route::get('/item', [ItemController::class, 'index'])->name('item.index');
+    Route::post('/item', [ItemController::class, 'store'])->name('item.store');
+    Route::get('/item/{item}', [ItemController::class, 'show'])->name('item.show');
+    Route::put('/item/{item}', [ItemController::class, 'update'])->name('item.update');
+    Route::delete('/item/{item}', [ItemController::class, 'destroy'])->name('item.destroy');
 });
 
 // grup khusus area petugas
@@ -42,7 +51,6 @@ Route::prefix('petugas')->middleware(['auth', 'verified'])->group(function () {
 
     // dashboar admin
     Route::get('/dashboard', [DashboardController::class, 'petugas'])->name('dashboard.petugas');
-    
 });
 
 

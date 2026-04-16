@@ -91,3 +91,12 @@ class LocationController extends Controller
             ->with('success', 'Lokasi berhasil dihapus permanen.');
     }
 }
+
+
+/**
+ * CRUD Items
+ * copy paste code CRUD lokasi, lalu sesuaikan dengan kebutuhan item
+ * Sesuaikan juga relasi antara item dengan lokasi, bisa dilihat di github
+ * Gambar tambahkan php artisan storage:link
+ * 
+ */
