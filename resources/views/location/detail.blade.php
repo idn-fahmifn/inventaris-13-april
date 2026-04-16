@@ -15,16 +15,26 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
             {{-- area detail lokasi --}}
-            <div class="bg-white dark:bg-slate-900 rounded-md shadow-sm border border-slate-100 dark:border-slate-800 overflow-hidden mb-6">
+            <div
+                class="bg-white dark:bg-slate-900 rounded-md shadow-sm border border-slate-100 dark:border-slate-800 overflow-hidden mb-6">
                 <div class="p-6">
                     <h3 class="text-lg font-bold text-slate-800 dark:text-slate-200 mb-2">{{ $location->name }}</h3>
-                    <p class="text-sm text-slate-400 dark:text-slate-500 mb-4">Penanggung Jawab: {{ $location->user->name }}</p>
+                    <p class="text-sm text-slate-400 dark:text-slate-500 mb-4">Penanggung Jawab:
+                        {{ $location->user->name }}</p>
                     <p class="text-sm text-slate-600 dark:text-slate-400">{{ $location->description }}</p>
                 </div>
             </div>
 
+
             <div
                 class="bg-white dark:bg-slate-900 rounded-md shadow-sm border border-slate-100 dark:border-slate-800 overflow-hidden">
+                <div class="p-6">
+                    <h3 class="text-lg font-bold text-slate-800 dark:text-slate-200">Daftar Barang di Lokasi Ini
+                    </h3>
+                    <p class="text-sm text-slate-400 dark:text-slate-500 mb-2">Jumlah Barang:
+                        {{ $location->item_count }}</p>
+                    <!-- Tambahkan tabel atau daftar barang di lokasi ini -->
+                </div>
                 <div class="overflow-x-auto">
                     <table class="w-full text-left border-collapse">
                         <thead>
@@ -38,42 +48,7 @@
                         </thead>
                         <tbody class="divide-y divide-slate-50 dark:divide-slate-800">
 
-                            @forelse ($locations as $location)
-                                <tr class="group hover:bg-blue-50/30 dark:hover:bg-blue-900/10 transition-colors">
-                                    <td class="px-8 py-6">
-                                        <div class="font-bold text-slate-700 dark:text-slate-200 text-sm">
-                                            {{ $location->name }}</div>
-                                        <div class="text-xs text-slate-400 dark:text-slate-500 mt-0.5 tracking-wider">
-                                            {{ $location->user->name }}</div>
-                                    </td>
-                                    <td class="px-8 py-6">
-                                        <span
-                                            class="text-sm text-slate-600 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 px-3 py-1 rounded-lg">
-                                            {{ $location->item_count }} Barang
-                                        </span>
-                                    </td>
-                                    <td
-                                        class="px-8 py-6 text-center font-bold text-slate-700 dark:text-slate-300 text-sm">
-                                        {{ $location->created_at->format('d M Y') }}
-                                    </td>
-                                    <td class="px-8 py-6 text-right">
-                                        <button
-                                            class="text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors mx-2">
-                                            <svg class="w-5 h-5" fill="none" stroke="currentColor"
-                                                viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
-                                            </svg>
-                                        </button>
-                                    </td>
-                                </tr>
-                            @empty
-                                <tr class="group hover:bg-blue-50/30 dark:hover:bg-blue-900/10 transition-colors">
-                                    <td colspan="4" class="px-8 py-6 text-center text-slate-400 dark:text-slate-500">
-                                        Tidak ada lokasi yang ditemukan.
-                                    </td>
-                                </tr>
-                            @endforelse
+
 
 
                         </tbody>
@@ -113,9 +88,10 @@
 
                     <div class="my-2">
                         <x-input-label for="petugas" :value="__('Petugas')" />
-                        <select name="petugas" id="petugas" class="block mt-1 w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm">
+                        <select name="petugas" id="petugas"
+                            class="block mt-1 w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm">
                             <option value="">Pilih Petugas</option>
-                            @foreach($petugas as $p)
+                            @foreach ($petugas as $p)
                                 <option value="{{ $p->id }}" {{ old('petugas') == $p->id ? 'selected' : '' }}>
                                     {{ $p->name }}
                                 </option>
@@ -127,7 +103,8 @@
 
                 <div class="my-2">
                     <x-input-label for="description" :value="__('Description')" />
-                    <textarea name="description" id="description" class="block mt-1 w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm">{{ old('description') }}</textarea>
+                    <textarea name="description" id="description"
+                        class="block mt-1 w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm">{{ old('description') }}</textarea>
                     <x-input-error :messages="$errors->get('description')" class="mt-2" />
                 </div>
 
