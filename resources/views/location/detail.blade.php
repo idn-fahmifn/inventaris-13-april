@@ -83,7 +83,7 @@
                     <div class="my-2">
                         <x-input-label for="nama_lokasi" :value="__('Nama Lokasi')" />
                         <x-text-input id="nama_lokasi" class="block mt-1 w-full" type="text" name="nama_lokasi"
-                            :value="old('nama_lokasi')" required autofocus autocomplete="username" />
+                            :value="old('nama_lokasi', $location->name)" required autofocus autocomplete="username" />
                         <x-input-error :messages="$errors->get('nama_lokasi')" class="mt-2" />
                     </div>
 
@@ -93,7 +93,7 @@
                             class="block mt-1 w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm">
                             <option value="">Pilih Petugas</option>
                             @foreach ($petugas as $p)
-                                <option value="{{ $p->id }}" {{ old('petugas') == $p->id ? 'selected' : '' }}>
+                                <option value="{{ $p->id }}" {{ old('petugas', $location->user_id) == $p->id ? 'selected' : '' }}>
                                     {{ $p->name }}
                                 </option>
                             @endforeach
@@ -105,7 +105,7 @@
                 <div class="my-2">
                     <x-input-label for="description" :value="__('Description')" />
                     <textarea name="description" id="description"
-                        class="block mt-1 w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm">{{ old('description') }}</textarea>
+                        class="block mt-1 w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm">{{ old('description', $location->description) }}</textarea>
                     <x-input-error :messages="$errors->get('description')" class="mt-2" />
                 </div>
 
