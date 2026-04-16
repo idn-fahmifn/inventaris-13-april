@@ -72,4 +72,22 @@ class LocationController extends Controller
         $locations = Location::onlyTrashed()->with('user')->withCount('item')->get(); //mengambil data lokasi yang sudah dihapus (soft delete) beserta relasi user dan menghitung jumlah item
         return view('location.trash', compact('locations'));
     }
+
+    public function restore($id)
+    {
+        $location = Location::findOrFail($id);
+        $location->restore();
+
+        return redirect()->route('location.index')
+        ->with('success', 'Lokasi berhasil dikembalikan.');
+    }
+
+    public function forceDelete($id)
+    {
+        $location = Location::findOrFail($id);
+        $location->forceDelete();
+
+        return redirect()->route('location.index')
+        ->with('success', 'Lokasi berhasil dihapus permanen.');
+    }
 }
