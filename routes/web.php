@@ -23,6 +23,7 @@ Route::prefix('admin')->middleware(['auth', 'verified', 'role'])->group(function
 
     // lokasi
     Route::get('/location', [LocationController::class,'index'])->name('location.index');
+    Route::post('/location', [LocationController::class,'store'])->name('location.store');
 
 
 

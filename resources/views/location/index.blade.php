@@ -59,11 +59,11 @@
                                     </td>
                                 </tr>
                             @empty
-                            <tr class="group hover:bg-blue-50/30 dark:hover:bg-blue-900/10 transition-colors">
-                                <td colspan="4" class="px-8 py-6 text-center text-slate-400 dark:text-slate-500">
-                                    Tidak ada lokasi yang ditemukan.
-                                </td>
-                            </tr>
+                                <tr class="group hover:bg-blue-50/30 dark:hover:bg-blue-900/10 transition-colors">
+                                    <td colspan="4" class="px-8 py-6 text-center text-slate-400 dark:text-slate-500">
+                                        Tidak ada lokasi yang ditemukan.
+                                    </td>
+                                </tr>
                             @endforelse
 
 
@@ -79,9 +79,9 @@
             <div class="flex items-center justify-between mb-8">
                 <div>
                     <h2 class="text-xl font-black text-slate-800 dark:text-white">
-                        Tambah Petugas Baru
+                        Tambah Lokasi Baru
                     </h2>
-                    <p class="text-sm text-slate-400 dark:text-slate-500 mt-1">Daftarkan petugas baru</p>
+                    <p class="text-sm text-slate-400 dark:text-slate-500 mt-1">Daftarkan lokasi baru</p>
                 </div>
                 <div class="p-3 rounded-2xl bg-blue-50 dark:bg-blue-900/30 text-blue-500">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -91,23 +91,35 @@
                 </div>
             </div>
 
-            <form method="post" action="#" class="space-y-6">
+            <form method="post" action="{{ route('location.store') }}" class="space-y-6">
                 @csrf
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                        <x-input-label for="nama_petugas" :value="__('Nama Petugas')" />
-                        <x-text-input id="nama_petugas" class="block mt-1 w-full" type="text" name="nama_petugas"
-                            :value="old('nama_petugas')" required autofocus autocomplete="username" />
-                        <x-input-error :messages="$errors->get('nama_petugas')" class="mt-2" />
+                    <div class="my-2">
+                        <x-input-label for="nama_lokasi" :value="__('Nama Lokasi')" />
+                        <x-text-input id="nama_lokasi" class="block mt-1 w-full" type="text" name="nama_lokasi"
+                            :value="old('nama_lokasi')" required autofocus autocomplete="username" />
+                        <x-input-error :messages="$errors->get('nama_lokasi')" class="mt-2" />
                     </div>
 
-                    <div>
-                        <x-input-label for="email" :value="__('Email')" />
-                        <x-text-input id="email" class="block mt-1 w-full" type="email" name="email"
-                            :value="old('email')" required autofocus autocomplete="username" />
-                        <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                    <div class="my-2">
+                        <x-input-label for="petugas" :value="__('Petugas')" />
+                        <select name="petugas" id="petugas" class="block mt-1 w-full border-gray-300 focus:border-blue-500 focus:ring-blue-500 rounded-md shadow-sm">
+                            <option value="">Pilih Petugas</option>
+                            @foreach($petugas as $p)
+                                <option value="{{ $p->id }}" {{ old('petugas') == $p->id ? 'selected' : '' }}>
+                                    {{ $p->name }}
+                                </option>
+                            @endforeach
+                        </select>
+                        <x-input-error :messages="$errors->get('petugas')" class="mt-2" />
                     </div>
+                </div>
+
+                <div class="my-2">
+                    <x-input-label for="description" :value="__('Description')" />
+                    <textarea name="description" id="description" class="block mt-1 w-full">{{ old('description') }}</textarea>
+                    <x-input-error :messages="$errors->get('description')" class="mt-2" />
                 </div>
 
 
