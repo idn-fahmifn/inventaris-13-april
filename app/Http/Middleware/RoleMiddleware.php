@@ -20,9 +20,9 @@ class RoleMiddleware
         // Restriced access for admin and petugas
 
         if(!Auth::user()->check || !Auth::user()->is_admin) {
-            abort(403, 'Anda tidak bisa akses halaman ini');
+            // jika bukan admin, arahkan ke dashboard petugas
+            return redirect()->route('dashboard.petugas');
         }
-
 
         return $next($request);
     }

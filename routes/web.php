@@ -14,6 +14,14 @@ Route::prefix('admin')->middleware(['auth', 'verified', 'role'])->group(function
 
     // dashboar admin
     Route::get('/dashboard', [DashboardController::class, 'admin'])->name('dashboard');
+
+});
+
+// grup khusus area petugas
+Route::prefix('petugas')->middleware(['auth', 'verified'])->group(function () {
+
+    // dashboar admin
+    Route::get('/dashboard', [DashboardController::class, 'petugas'])->name('dashboard.petugas');
     
 });
 

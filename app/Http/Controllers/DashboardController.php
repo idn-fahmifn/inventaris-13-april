@@ -8,11 +8,11 @@ class DashboardController extends Controller
 {
     public function admin()
     {
-        return view('');
+        return view('dashboard');
     }
 
     public function petugas()
     {
-        return view('');
+        return view('petugas.dashboard');
     }
 }
