@@ -67,10 +67,9 @@
             <div class="flex items-center justify-between mb-8">
                 <div>
                     <h2 class="text-xl font-black text-slate-800 dark:text-white">
-                        Tambah Ruangan Baru
+                        Tambah Petugas Baru
                     </h2>
-                    <p class="text-sm text-slate-400 dark:text-slate-500 mt-1">Daftarkan lokasi penyimpanan aset baru
-                        Anda.</p>
+                    <p class="text-sm text-slate-400 dark:text-slate-500 mt-1">Daftarkan petugas baru</p>
                 </div>
                 <div class="p-3 rounded-2xl bg-blue-50 dark:bg-blue-900/30 text-blue-500">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -85,29 +84,20 @@
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                        <x-input-label for="name" value="Nama Ruangan" class="dark:text-slate-400" />
-                        <x-text-input id="name" name="name" type="text"
-                            class="mt-1 block w-full dark:bg-slate-800 dark:border-slate-700 rounded-xl"
-                            placeholder="Contoh: Ruang IT" />
+                        <x-input-label for="nama_petugas" :value="__('Nama Petugas')" />
+                        <x-text-input id="nama_petugas" class="block mt-1 w-full" type="text" name="nama_petugas"
+                            :value="old('nama_petugas')" required autofocus autocomplete="username" />
+                        <x-input-error :messages="$errors->get('nama_petugas')" class="mt-2" />
                     </div>
 
                     <div>
-                        <x-input-label for="code" value="Kode Ruangan" class="dark:text-slate-400" />
-                        <x-text-input id="code" name="code" type="text"
-                            class="mt-1 block w-full dark:bg-slate-800 dark:border-slate-700 rounded-xl"
-                            placeholder="KODE-01" />
+                        <x-input-label for="email" :value="__('Email')" />
+                        <x-text-input id="email" class="block mt-1 w-full" type="email" name="email"
+                            :value="old('email')" required autofocus autocomplete="username" />
+                        <x-input-error :messages="$errors->get('email')" class="mt-2" />
                     </div>
                 </div>
 
-                <div>
-                    <x-input-label for="category" value="Kategori" class="dark:text-slate-400" />
-                    <select id="category" name="category"
-                        class="mt-1 block w-full border-slate-300 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-xl shadow-sm">
-                        <option>Penyimpanan</option>
-                        <option>Fasilitas Umum</option>
-                        <option>Produksi</option>
-                    </select>
-                </div>
 
                 <div class="mt-8 flex justify-end gap-3">
                     <button type="button" x-on:click="$dispatch('close')"
