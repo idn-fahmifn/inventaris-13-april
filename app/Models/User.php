@@ -26,7 +26,14 @@ class User extends Authenticatable
     {
         return [
             'email_verified_at' => 'datetime',
+            'created_at' => 'datetime',
             'password' => 'hashed',
         ];
     }
+
+    public function locations()
+    {
+        return $this->hasMany(Location::class, 'user_id');
+    }
+
 }

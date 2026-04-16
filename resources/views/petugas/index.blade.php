@@ -29,32 +29,39 @@
                         </thead>
                         <tbody class="divide-y divide-slate-50 dark:divide-slate-800">
 
-                            <tr class="group hover:bg-blue-50/30 dark:hover:bg-blue-900/10 transition-colors">
-                                <td class="px-8 py-6">
-                                    <div class="font-bold text-slate-700 dark:text-slate-200 text-sm">
-                                        Asep</div>
-                                    <div class="text-xs text-slate-400 dark:text-slate-500 mt-0.5 tracking-wider">
-                                        asep@example.com</div>
-                                </td>
-                                <td class="px-8 py-6">
-                                    <span
-                                        class="text-sm text-slate-600 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 px-3 py-1 rounded-lg">
-                                        5
-                                    </span>
-                                </td>
-                                <td class="px-8 py-6 text-center font-bold text-slate-700 dark:text-slate-300 text-sm">
-                                    2023-01-01
-                                </td>
-                                <td class="px-8 py-6 text-right">
-                                    <button
-                                        class="text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors mx-2">
-                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
-                                        </svg>
-                                    </button>
-                                </td>
-                            </tr>
+                            @forelse ($users as $user)
+                                <tr class="group hover:bg-blue-50/30 dark:hover:bg-blue-900/10 transition-colors">
+                                    <td class="px-8 py-6">
+                                        <div class="font-bold text-slate-700 dark:text-slate-200 text-sm">
+                                            {{ $user->name }}</div>
+                                        <div class="text-xs text-slate-400 dark:text-slate-500 mt-0.5 tracking-wider">
+                                            {{ $user->email }}</div>
+                                    </td>
+                                    <td class="px-8 py-6">
+                                        <span
+                                            class="text-sm text-slate-600 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 px-3 py-1 rounded-lg">
+                                            {{ $user->locations_count }}
+                                        </span>
+                                    </td>
+                                    <td
+                                        class="px-8 py-6 text-center font-bold text-slate-700 dark:text-slate-300 text-sm">
+                                        {{ $user->created_at->format('d M Y') }}
+                                    </td>
+                                    <td class="px-8 py-6 text-right">
+                                        <button
+                                            class="text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors mx-2">
+                                            <svg class="w-5 h-5" fill="none" stroke="currentColor"
+                                                viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                                            </svg>
+                                        </button>
+                                    </td>
+                                </tr>
+                            @empty
+                            @endforelse
+
+
                         </tbody>
                     </table>
                 </div>

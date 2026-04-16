@@ -10,7 +10,8 @@ class PetugasController extends Controller
 {
     public function index()
     {
-        return view('petugas.index');
+        $users = User::where('is_admin', false)->withCount('locations')->get(); //menampilkan semu data petugas (bukan admin)
+        return view('petugas.index', compact('users'));
     }
 
     public function store(Request $request)
