@@ -41,7 +41,7 @@
                                     </td>
                                     <td
                                         class="px-8 py-6 text-center font-bold text-slate-700 dark:text-slate-300 text-sm">
-                                        {{ $location->deleted_at->format('d M Y') }}
+                                        {{ $location->deleted_at->diffForHumans() }}
                                     </td>
                                     <td class="px-8 py-6 text-right">
                                         

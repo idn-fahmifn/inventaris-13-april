@@ -15,6 +15,7 @@ class Location extends Model
     protected $casts = [
         'created_at' => 'datetime', // memastikan tipe data datetime
         'updated_at' => 'datetime',
+        'deleted_at' => 'datetime',
     ];
 
     // relasi ke user (petugas)

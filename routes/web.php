@@ -21,6 +21,9 @@ Route::prefix('admin')->middleware(['auth', 'verified', 'role'])->group(function
     Route::get('/petugas', [PetugasController::class, 'index'])->name('petugas.index');
     Route::post('/petugas', [PetugasController::class, 'store'])->name('petugas.store');
 
+     // menampilkan tempat sampah lokasi
+    Route::get('/location/trash', [LocationController::class, 'trash'])->name('location.trash');
+
     // lokasi
     Route::get('/location', [LocationController::class,'index'])->name('location.index');
     Route::post('/location', [LocationController::class,'store'])->name('location.store');
@@ -28,8 +31,7 @@ Route::prefix('admin')->middleware(['auth', 'verified', 'role'])->group(function
     Route::put('/location/{location}', [LocationController::class,'update'])->name('location.update');
     Route::delete('/location/{location}', [LocationController::class,'destroy'])->name('location.destroy');
 
-    // menampilkan tempat sampah lokasi
-    Route::get('/location/trash', [LocationController::class, 'trash'])->name('location.trash');
+   
 
 });
 
