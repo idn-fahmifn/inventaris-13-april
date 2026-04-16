@@ -57,4 +57,13 @@ class LocationController extends Controller
         return redirect()->route('location.index')
         ->with('success', 'Lokasi berhasil diperbarui.');
     }
+
+    public function destroy($id)
+    {
+        $location = Location::findOrFail($id);
+        $location->delete();
+
+        return redirect()->route('location.index')
+        ->with('success', 'Lokasi berhasil dipindahkan ke sampah.');
+    }
 }
