@@ -25,6 +25,8 @@ Route::prefix('admin')->middleware(['auth', 'verified', 'role'])->group(function
     Route::get('/location', [LocationController::class,'index'])->name('location.index');
     Route::post('/location', [LocationController::class,'store'])->name('location.store');
     Route::get('/location/{location}', [LocationController::class,'show'])->name('location.show');
+    Route::put('/location/{location}', [LocationController::class,'update'])->name('location.update');
+    Route::delete('/location/{location}', [LocationController::class,'destroy'])->name('location.destroy');
 
 });
 

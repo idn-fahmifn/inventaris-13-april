@@ -63,9 +63,9 @@
             <div class="flex items-center justify-between mb-8">
                 <div>
                     <h2 class="text-xl font-black text-slate-800 dark:text-white">
-                        Tambah Lokasi Baru
+                        Edit Lokasi
                     </h2>
-                    <p class="text-sm text-slate-400 dark:text-slate-500 mt-1">Daftarkan lokasi baru</p>
+                    <p class="text-sm text-slate-400 dark:text-slate-500 mt-1">Edit informasi lokasi</p>
                 </div>
                 <div class="p-3 rounded-2xl bg-blue-50 dark:bg-blue-900/30 text-blue-500">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -75,8 +75,9 @@
                 </div>
             </div>
 
-            <form method="post" action="{{ route('location.store') }}" class="space-y-6">
+            <form method="post" action="{{ route('location.update', $location->id) }}" class="space-y-6">
                 @csrf
+                @method('PUT')
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div class="my-2">
