@@ -31,4 +31,11 @@ class LocationController extends Controller
 
         return redirect()->route('location.index')->with('success', 'Lokasi berhasil ditambahkan.');
     }
+
+    public function show($param)
+    {
+        $locations = Location::findOrfail($param)->load('user')->loadCount('item'); //mengambil data lokasi beserta relasi user dan menghitung jumlah item
+        $petugas = User::where('is_admin', false)->get(); //mengambil data petugas (bukan admin) untuk dropdown pilihan petugas saat menambah lokasi
+        return view('location.detail', compact('locations', 'petugas'));
+    }
 }

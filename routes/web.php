@@ -24,8 +24,7 @@ Route::prefix('admin')->middleware(['auth', 'verified', 'role'])->group(function
     // lokasi
     Route::get('/location', [LocationController::class,'index'])->name('location.index');
     Route::post('/location', [LocationController::class,'store'])->name('location.store');
-
-
+    Route::get('/location/{location}', [LocationController::class,'show'])->name('location.show');
 
 });
 
