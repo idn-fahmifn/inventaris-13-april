@@ -38,4 +38,23 @@ class LocationController extends Controller
         $petugas = User::where('is_admin', false)->get(); //mengambil data petugas (bukan admin) untuk dropdown pilihan petugas saat menambah lokasi
         return view('location.detail', compact('location', 'petugas'));
     }
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'nama_lokasi' => 'required|string|max:255',
+            'petugas' => 'required|exists:users,id',
+            'description' => 'nullable|string',
+        ]);
+
+        $location = Location::findOrFail($id);
+        $location->update([
+            'name' => $request->nama_lokasi,
+            'user_id' => $request->petugas,
+            'description' => $request->description,
+        ]);
+
+        return redirect()->route('location.index')
+        ->with('success', 'Lokasi berhasil diperbarui.');
+    }
 }
