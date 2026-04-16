@@ -66,4 +66,10 @@ class LocationController extends Controller
         return redirect()->route('location.index')
         ->with('success', 'Lokasi berhasil dipindahkan ke sampah.');
     }
+
+    public function trash()
+    {
+        $locations = Location::onlyTrashed()->with('user')->withCount('item')->get(); //mengambil data lokasi yang sudah dihapus (soft delete) beserta relasi user dan menghitung jumlah item
+        return view('location.trash', compact('locations'));
+    }
 }

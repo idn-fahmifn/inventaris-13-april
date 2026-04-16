@@ -28,6 +28,9 @@ Route::prefix('admin')->middleware(['auth', 'verified', 'role'])->group(function
     Route::put('/location/{location}', [LocationController::class,'update'])->name('location.update');
     Route::delete('/location/{location}', [LocationController::class,'destroy'])->name('location.destroy');
 
+    // menampilkan tempat sampah lokasi
+    Route::get('/location/trash', [LocationController::class, 'trash'])->name('location.trash');
+
 });
 
 // grup khusus area petugas
