@@ -45,10 +45,16 @@
                                     </td>
                                     <td class="px-8 py-6 text-right">
                                         {{-- mengembalikan lokasi --}}
-                                        <form action="" method="post">
-                                            <button type="submit" class="text-green-600 dark:text-gray-200 text-sm text-bold">Kembalikan</button>
+                                        <form action="{{ route('location.restore', $location->id) }}" method="post">
+                                            @csrf
+                                            @method('PATCH')
+                                            <button type="submit"
+                                                class="text-green-600 dark:text-gray-200 text-sm text-bold">Kembalikan</button>
                                         </form>
-                                        <form action="" method="post">
+                                        <form action="{{ route('location.force-delete', $location->id) }}"
+                                            method="post">
+                                            @csrf
+                                            @method('DELETE')
                                             <button type="submit" class="text-red-600 text-sm text-bold">Hapus Permanen
 
                                             </button>

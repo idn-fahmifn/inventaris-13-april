@@ -23,6 +23,8 @@ Route::prefix('admin')->middleware(['auth', 'verified', 'role'])->group(function
 
      // menampilkan tempat sampah lokasi
     Route::get('/location/trash', [LocationController::class, 'trash'])->name('location.trash');
+    Route::patch('/location/{location}/restore', [LocationController::class, 'restore'])->name('location.restore');
+    Route::delete('/location/{location}/force-delete', [LocationController::class, 'forceDelete'])->name('location.force-delete');
 
     // lokasi
     Route::get('/location', [LocationController::class,'index'])->name('location.index');
