@@ -4,10 +4,19 @@
             <h2 class="font-bold text-2xl text-slate-800 dark:text-slate-200 leading-tight">
                 {{ __('Detail Lokasi') }}
             </h2>
-            <button x-data="" x-on:click.prevent="$dispatch('open-modal', 'create-room')"
-                class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-6 py-2.5 rounded-xl text-sm font-bold shadow-lg shadow-blue-200 dark:shadow-none transition-all duration-300 transform hover:scale-105">
-                Edit Lokasi
-            </button>
+
+            <div class="flex justify-between items-center">
+                <button x-data="" x-on:click.prevent="$dispatch('open-modal', 'create-room')"
+                    class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-6 py-2.5 rounded-xl text-sm font-bold shadow-lg shadow-blue-200 dark:shadow-none transition-all duration-300 transform hover:scale-105">
+                    Edit Lokasi
+                </button>
+
+                <button x-data="" 
+                    class="bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700 ms-2 text-white px-6 py-2.5 rounded-xl text-sm font-bold shadow-lg shadow-red-200 dark:shadow-none transition-all duration-300 transform hover:scale-105">
+                    Hapus Lokasi
+                </button>
+                
+            </div>
         </div>
     </x-slot>
 
@@ -93,7 +102,8 @@
                             class="block mt-1 w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm">
                             <option value="">Pilih Petugas</option>
                             @foreach ($petugas as $p)
-                                <option value="{{ $p->id }}" {{ old('petugas', $location->user_id) == $p->id ? 'selected' : '' }}>
+                                <option value="{{ $p->id }}"
+                                    {{ old('petugas', $location->user_id) == $p->id ? 'selected' : '' }}>
                                     {{ $p->name }}
                                 </option>
                             @endforeach
