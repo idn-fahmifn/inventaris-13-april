@@ -18,6 +18,7 @@ Route::prefix('admin')->middleware(['auth', 'verified', 'role'])->group(function
 
     // Petugas
     Route::get('/petugas', [PetugasController::class, 'index'])->name('petugas.index');
+    Route::post('/petugas', [PetugasController::class, 'store'])->name('petugas.store');
 
 
 
